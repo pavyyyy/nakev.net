@@ -1,0 +1,16 @@
+
+
+.body{
+    background: rgb(88, 88, 88);
+}
+
+.titre{
+    color: aliceblue;
+    letter-spacing: 40px;
+
+}
+
+.p{
+    size: 50px;
+    color: chartreuse;
+}
