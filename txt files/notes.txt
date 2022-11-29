@@ -34,8 +34,9 @@ projects:
      -weather
      -secret game (snake, tetris, pacman,...)
      -links to other projects (like html2nde)
-     -cv
-     -
+     -cv          
+     -calendar
+
 
 
 -recreate python games:
