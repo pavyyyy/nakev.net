@@ -19,3 +19,27 @@ todo:
 --------------------------------------------------
 
 nakev.net/html2nde/
+
+
+
+projects:
+
+
+-website:
+     -account system/way to access secret (like double click corner)
+     -document depot
+     -links for moodle, eduka, pronote, messagerie, bla bla bla w3schools
+     -maybe python interpreter and ez code library for nsi
+     -clock
+     -weather
+     -secret game (snake, tetris, pacman,...)
+     -links to other projects (like html2nde)
+     -cv
+     -
+
+
+-recreate python games:
+     -tetris
+     -snake
+     -pacman
+     -...
