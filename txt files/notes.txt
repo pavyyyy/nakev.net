@@ -1,0 +1,21 @@
+nakev.net
+http://nakev.net/
+https://github.com/pavyyyy/nakev.net
+https://domains.google.com/registrar/nakev.net/webhost?gl=AT
+
+--------------------------------------------------
+
+needed:
+-CNAME
+-''index.html''
+
+--------------------------------------------------
+
+todo:
+-update 2nde html site:
+	-make % css values
+
+
+--------------------------------------------------
+
+nakev.net/html2nde/
