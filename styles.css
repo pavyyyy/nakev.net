@@ -42,7 +42,6 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     position: relative;
-    font-size: 16px;
 }
 
 .btn:hover {
@@ -66,7 +65,7 @@ body {
 
 .inner-content {
     display: none;
-    width: 100%;
+    width: 80%;
 }
 
 .expanded .inner-content {
@@ -77,11 +76,11 @@ body {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
+    width: 100%; /* Adjust to fit 80% of the left space */
 }
 
 .inner-buttons button {
     flex: 1;
-    height: 50px;
     padding: 10px;
     cursor: pointer;
     background-color: grey;
@@ -104,17 +103,16 @@ body {
 }
 
 .inner-textarea {
-    flex: 1;
     padding: 10px;
-    width: calc(100% - 20px); /* Adjust for padding */
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: none;
     margin-bottom: 10px;
+    width: 96%; /* Adjust to fit 80% of the left space */
 }
 
 .inner-buttons .submit {
-    background-color: #007BFF;
+    background-color: #007BFF; /* Adjust to fit 80% of the left space */
     margin-top: auto;
 }
 
@@ -126,4 +124,14 @@ body {
     .large {
         grid-column: span 1;
     }
+}
+
+.right-indicator {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20%; /* Adjust to 20% width */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

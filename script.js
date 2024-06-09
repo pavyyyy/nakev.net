@@ -1,5 +1,13 @@
 let buttonStates = Array(20).fill("stopped");
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize all button states at the beginning
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach((button, index) => {
+        updateButtonState(button, index + 1);
+    });
+});
+
 function expandButton(button, buttonIndex) {
     button.classList.toggle('expanded');
 
@@ -10,24 +18,31 @@ function expandButton(button, buttonIndex) {
         innerContent.innerHTML = `
             <div class="inner-buttons">
                 <button class="start" onclick="startFunction(event, ${buttonIndex})">Start</button>
-                <button class="stop" onclick="stopFunction(event, ${buttonIndex})" disabled>Stop</button>
+                <button class="stop active" onclick="stopFunction(event, ${buttonIndex})" disabled>Stop</button>
             </div>
             <textarea class="inner-textarea" rows="5" placeholder="Enter comment"></textarea>
             <button class="btn submit" onclick="submitFunction(event, ${buttonIndex})">Submit</button>
         `;
 
-        // Add event listener to stop propagation
-        innerContent.addEventListener('click', function(event) {
+        // Add event listener to stop propagation and prevent default for textarea keydown event
+        const textarea = innerContent.querySelector('.inner-textarea');
+        textarea.addEventListener('keydown', function(event) {
             event.stopPropagation();
         });
 
-        // Add event listener to stop keydown propagation for textarea
-        innerContent.querySelector('.inner-textarea').addEventListener('keydown', function(event) {
+        textarea.addEventListener('keyup', function(event) {
+            event.stopPropagation();
+        });
+
+        // Prevent click events on inner content from affecting the outer button
+        innerContent.addEventListener('click', function(event) {
             event.stopPropagation();
         });
 
         button.appendChild(innerContent);
     }
+
+    updateButtonState(button, buttonIndex);
 }
 
 function startFunction(event, buttonIndex) {
@@ -42,6 +57,7 @@ function startFunction(event, buttonIndex) {
     stopButton.disabled = false;
 
     buttonStates[buttonIndex - 1] = "started";
+    updateButtonState(button.closest('.btn'), buttonIndex);
 }
 
 function stopFunction(event, buttonIndex) {
@@ -56,6 +72,7 @@ function stopFunction(event, buttonIndex) {
     startButton.disabled = false;
 
     buttonStates[buttonIndex - 1] = "stopped";
+    updateButtonState(button.closest('.btn'), buttonIndex);
 }
 
 function submitFunction(event, buttonIndex) {
@@ -70,4 +87,20 @@ function submitFunction(event, buttonIndex) {
     const comment = textarea.value;
 
     alert(`Button ${buttonIndex} - Selected Action: ${selectedAction}\nComment: ${comment}\nState: ${buttonStates[buttonIndex - 1]}`);
+}
+
+function updateButtonState(button, buttonIndex) {
+    const state = buttonStates[buttonIndex - 1];
+    const rightIndicator = document.createElement('div');
+    rightIndicator.className = 'right-indicator';
+    if (state === 'started') {
+        rightIndicator.style.backgroundColor = 'green';
+    } else {
+        rightIndicator.style.backgroundColor = 'red';
+    }
+    if (!button.querySelector('.right-indicator')) {
+        button.appendChild(rightIndicator);
+    } else {
+        button.querySelector('.right-indicator').style.backgroundColor = rightIndicator.style.backgroundColor;
+    }
 }
